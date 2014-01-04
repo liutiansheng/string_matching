@@ -24,10 +24,9 @@ using namespace std;
 ///
 /// @brief find the first index of @a pattern in string @a text using BF string matching
 /// @retval -1 if not found
-/// @retcal >= 0 if found
+/// @retval >= 0 if found
 /// 
 int bf_match(char *pattern, char *text) {
-  int i = -1;
   if (!pattern || !(*pattern) || !text)
     return -1;
 
