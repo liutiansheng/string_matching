@@ -1,0 +1,11 @@
+The repository is to save all string matching algorithms implemented by myself.
+
+Reference:
+1. Flexible Pattern Matching in Strings: Practical On-line Search Algorithms for Texts and Biological Sequences, Gonzalo Navarro, Mathieu Raffinot, 
+   http://www.amazon.cn/mn/detailApp/ref=asc_df_0521039932843906/?asin=0521039932&tag=douban-23&creative=2384&creativeASIN=0521039932&linkCode=asn
+   [中文版] 柔性字符串匹配，纳瓦罗著，中科院计算所网络信息安全研究组译，电子工业出版社
+   http://book.douban.com/subject/2038862/
+
+2. Introduction to Information Retrieval, Christopher D.Manning/Hinrich Schütze/Prabhakar Raghavan,
+   [中文版] 信息检索导论，王斌译，人民邮电出版社
+   http://book.douban.com/subject/5252170/
