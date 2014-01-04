@@ -25,29 +25,30 @@ using namespace std;
 ///
 /// @brief get the next longest match length 
 ///        if next[m] = k, it means pattern[0...k-1] = pattern[m-k...m-1]
+///        and pattern[k] != pattern[m]
 /// @param M the length of pattern string
 /// 
 void calc_next_longest_matchs(char *pattern, int next[])
 {
   next[0] = -1;
-  int k = -1;
-  for (int m = 1; pattern[m] != '\0'; ++m) {
-    if (k == -1 || pattern[k] == pattern[m - 1]) {
-      k = k + 1;
+  int m = 0, k = -1;
+  for (; pattern[m + 1] != '\0';) {
+    if (k == -1 || pattern[m] == pattern[k]) {
+      ++m; ++k;
+      if (pattern[m] == pattern[k])
+        next[m] = next[k];
+      else
+        next[m] = k;
     } else {
       k = next[k];
-      if (k == -1) {
-        k = 0;
-      }
     }
-    next[m] = k;
   }
 //  output for debug
-//  cout<<"\n next array is:\n";
-//  for (int m = 0; m < M; ++m) {
-//    cout<<next[m];
-//  }
-//  cout<<endl;
+  cout<<"\n next array is:\n";
+  for (int m = 0; pattern[m]; ++m) {
+    cout<<next[m];
+  }
+  cout<<endl;
 }
 
 ///
