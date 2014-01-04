@@ -27,11 +27,11 @@ using namespace std;
 ///        if next[m] = k, it means pattern[0...k-1] = pattern[m-k...m-1]
 /// @param M the length of pattern string
 /// 
-void calc_next_longest_matchs(char *pattern, int next[], int M)
+void calc_next_longest_matchs(char *pattern, int next[])
 {
   next[0] = -1;
-  int k = next[0];
-  for (int m = 1; m < M; ++m) {
+  int k = -1;
+  for (int m = 1; pattern[m] != '\0'; ++m) {
     if (k == -1 || pattern[k] == pattern[m - 1]) {
       k = k + 1;
     } else {
@@ -67,7 +67,7 @@ int kmp_match(char *pattern, char *text)
   if (!next) { //out of memory
     return not_found;
   }
-  calc_next_longest_matchs(pattern, next, M);
+  calc_next_longest_matchs(pattern, next);
 
   int m = 0;
   for (int n = 0; text[n] != '\0';) {
