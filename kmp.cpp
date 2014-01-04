@@ -21,7 +21,6 @@
 
 using namespace std;
 
-const int not_found = -1;
 
 ///
 /// @brief get the next longest match length 
@@ -31,18 +30,15 @@ const int not_found = -1;
 void calc_next_longest_matchs(char *pattern, int next[], int M)
 {
   next[0] = -1;
-  if (M <= 1)
-    return;
-
-  next[1] =  0;
-  int k = next[1];
-  for (int m = 2; m < M; ++m) {
-    if (pattern[k] == pattern[m - 1]) {
+  int k = next[0];
+  for (int m = 1; m < M; ++m) {
+    if (k == -1 || pattern[k] == pattern[m - 1]) {
       k = k + 1;
     } else {
       k = next[k];
-      if (k == -1)
+      if (k == -1) {
         k = 0;
+      }
     }
     next[m] = k;
   }
@@ -61,6 +57,8 @@ void calc_next_longest_matchs(char *pattern, int next[], int M)
 /// 
 int kmp_match(char *pattern, char *text)
 {
+  static const int not_found = -1;
+
   if (!pattern || !(*pattern) || !text)
     return not_found;
 
