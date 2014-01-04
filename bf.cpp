@@ -26,31 +26,31 @@ using namespace std;
 /// @retval -1 if not found
 /// @retval >= 0 if found
 /// 
-int bf_match(char *pattern, char *text) {
-  if (!pattern || !(*pattern) || !text)
-    return -1;
+int bf_match(char *pattern, char *text)
+{
+  static const int not_found = -1;
 
-  int k = 0;
+  if (!pattern || !(*pattern) || !text)
+    return not_found;
+
   for (int j = 0; text[j] != '\0'; ++j) {
-    if (text[j] == pattern[k]) {
-      int m = j + 1; k += 1;
-      for (; text[m] != '\0' && pattern[k] != '\0'; ++m, ++k) {
-        if (text[m] != pattern[k]) break;
-      }
-      if (text[m] == '\0' && pattern[k] != '\0') {
-        return -1;
-      }
-      if (pattern[k] == '\0') { //matched
-        return j;
-      }
-      k = 0;
+    if (text[j] != pattern[0])
+      continue;
+
+    int m = j + 1, k = 1;
+    for (; text[m] != '\0' && text[m] == pattern[k]; ++m, ++k);
+    if (pattern[k] == '\0') { //matched
+      return j;
+    }
+    if (text[m] == '\0') { //don't need to do more check
+      return not_found;
     }
   }
-  return -1;
+  return not_found;
 }
 
-int main(int argc, char *argv[]) {
-
+int main(int argc, char *argv[])
+{
   char default_text[] = "asdfasdfa";
   char default_pattern[] = "dfas";
 
@@ -60,6 +60,6 @@ int main(int argc, char *argv[]) {
     pattern = argv[1];
   }
 
-  cout<<"find "<<pattern<<" in "<<text<<" : "<<bf_match(pattern, text)<<endl;
+  cout<<"find "<<pattern<<" in "<<text<<" (zero-based) : "<<bf_match(pattern, text)<<endl;
   return 0;
 }
