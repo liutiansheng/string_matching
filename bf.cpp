@@ -33,30 +33,28 @@ int bf_match(char *pattern, char *text)
   if (!pattern || !(*pattern) || !text)
     return not_found;
 
+  int n = 0, m = 0;
   for (int j = 0; text[j] != '\0'; ++j) {
-    if (text[j] != pattern[0])
-      continue;
-
-    int m = j + 1, k = 1;
-    for (; text[m] != '\0' && text[m] == pattern[k]; ++m, ++k);
-    if (pattern[k] == '\0') { //matched
+    for (n = j, m = 0; text[n] != '\0' && text[n] == pattern[m]; ++n, ++m);
+    if (pattern[m] == '\0') { //matched
       return j;
     }
-    if (text[m] == '\0') { //don't need to do more check
-      return not_found;
+    if (text[n] == '\0') {
+      break;
     }
   }
+
   return not_found;
 }
 
 int main(int argc, char *argv[])
 {
-  char default_text[] = "asdfasdfa";
+  char default_text[]    = "asdfasdfa";
   char default_pattern[] = "dfas";
 
   char *text = default_text, *pattern = default_pattern;
   if (argc == 3) {
-    text = argv[2];
+    text    = argv[2];
     pattern = argv[1];
   }
 
