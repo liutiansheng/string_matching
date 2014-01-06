@@ -73,8 +73,10 @@ int kmp_match(char *pattern, char *text)
   int m = 0;
   for (int n = 0; text[n] != '\0';) {
     if (m == -1 || text[n] == pattern[m]) {
-      if (m == M - 1)
+      if (m == M - 1) {
+        delete[] next; next = NULL;
         return n - M + 1;
+      }
       ++n; ++m;
     } else {
       m = next[m];
