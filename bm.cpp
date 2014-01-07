@@ -30,12 +30,10 @@ typedef vector<int> int_vector;
 ///
 /// @brief get dist based on bad character rule 
 ///
-void get_dist1(char *pattern, c_map &dist1)
+void get_dist1(char *pattern, int M, c_map &dist1)
 {
-  for (int m = 0; pattern[m] != '\0'; ++m) {
-    c_map::iterator it_f = dist1.find(pattern[m]);
-    if (it_f == dist1.end())
-      dist1[pattern[m]] = m;
+  for (int m = 0; m < M - 1; ++m) {
+    dist1[pattern[m]] = M - m - 1;
   }
 
 #ifdef DEBUG
@@ -108,7 +106,7 @@ int bm_match(char *pattern, char *text)
 
   //get dist based on bad character shifting rule
   c_map dist1; //map: a character <-> the first occurrence of character in pattern
-  get_dist1(pattern, dist1);
+  get_dist1(pattern, M, dist1);
 
   //get dist based on good suffix shifting rule
   int_vector dist2(M);
@@ -129,7 +127,7 @@ int bm_match(char *pattern, char *text)
     }
     else {
       c_map::iterator it_f = dist1.find(text[i]);
-      d1 = (it_f != dist1.end())? (m - it_f->second) : M;
+      d1 = (it_f != dist1.end())? it_f->second : M;
       n = max(n + dist2[m], i + d1);
     }
   }
