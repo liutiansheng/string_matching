@@ -15,7 +15,7 @@
 // > ./bm
 // > 2
 // or
-// > ./kmp <own-defined pattern> <own-defined text>
+// > ./bm <own-defined pattern> <own-defined text>
 ////////////////////////////////////////////////////////////////////////////////
 #include <iostream>
 #include <map>
