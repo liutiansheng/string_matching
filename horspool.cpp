@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-// BM string matching algorithm
+// horspool string matching algorithm
 //
 // Time complexity: best O(n/m), worst O(nm)?, where m, n is the length of pattern and text respectively 
 //
