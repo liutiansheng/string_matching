@@ -128,7 +128,7 @@ int bm_match(char *pattern, char *text)
     else {
       c_map::iterator it_f = dist1.find(text[i]);
       d1 = (it_f != dist1.end())? it_f->second : M;
-      n = max(n + dist2[m], i + d1 - (M - 1 - m));
+      n += max(dist2[m], d1 - (M - 1 - m));
     }
   }
 
