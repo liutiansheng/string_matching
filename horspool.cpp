@@ -15,6 +15,10 @@
 // > ./horspool
 // > 2
 // or
+// >./horspool announce CPM_annual_conference_announce
+// or
+// >./horspool ATATA AGATACGATATATAC
+// or
 // > ./horspool <own-defined pattern> <own-defined text>
 ////////////////////////////////////////////////////////////////////////////////
 #include <iostream>
