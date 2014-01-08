@@ -105,7 +105,7 @@ int bm_match(char *pattern, char *text)
     return not_found;
 
   //get dist based on bad character shifting rule
-  c_map dist1; //map: a character <-> the first occurrence of character in pattern
+  c_map dist1; //map: a character <-> the last occurrence of character in pattern
   get_dist1(pattern, M, dist1);
 
   //get dist based on good suffix shifting rule
