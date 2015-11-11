@@ -3,7 +3,7 @@
 //
 // Time complexity: O(m + n) where m, n is the length of pattern and text respectively 
 //
-// Author: Tiansheng(Chinson) Liu, liutiansheng@gmail.com, 2013 - . 
+// Author: Tiansheng(Chinson) Liu, 2013 - . 
 //
 // You may freely use or modify the code provided this copyright is included
 // in all derived versions.
